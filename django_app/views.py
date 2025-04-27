@@ -27,6 +27,4 @@ def member_list(request):
 
 def member_list_template(request):
     members = Member.objects.all().values()
-    template = loader.get_template("all_members.html")
-    context = {"members": members}
-    return HttpResponse(template.render(context, request))
+    return render(request, "all_members.html", {"members": members})
