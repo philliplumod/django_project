@@ -1,6 +1,9 @@
 from django.http import HttpResponse
 from rest_framework import status
+from django.shortcuts import render
 from django.template import loader
+from .models import Member
+from django.http import JsonResponse
 
 
 def home(request):
@@ -8,4 +11,15 @@ def home(request):
     return HttpResponse(template.render({}, request))
 
 
-# Create your views here.
+def member_list(request):
+    members = Member.objects.all()
+    data = []
+    for member in members:
+        data.append(
+            {
+                "member_id": str(member.member_id),
+                "firstname": member.firstname,
+                "lastname": member.lastname,
+            }
+        )
+    return JsonResponse(data, safe=False)
