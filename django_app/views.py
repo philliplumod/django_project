@@ -1,10 +1,11 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import status
+from django.template import loader
 
 
 def home(request):
-    return HttpResponse(status.HTTP_200_OK)
+    template = loader.get_template("django_template.html")
+    return HttpResponse(template.render({}, request))
 
 
 # Create your views here.
