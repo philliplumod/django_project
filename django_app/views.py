@@ -28,3 +28,8 @@ def member_list(request):
 def member_list_template(request):
     members = Member.objects.all().values()
     return render(request, "all_members.html", {"members": members})
+
+
+def member_details(request, member_id):
+    members = Member.objects.get(member_id=member_id)
+    return render(request, "member_details.html", {"members": members})
