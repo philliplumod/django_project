@@ -8,7 +8,7 @@ from django.http import JsonResponse
 
 def home(request):
     template = loader.get_template("django_template.html")
-    return HttpResponse(template.render({}, request))
+    return HttpResponse(template.render())
 
 
 def member_list(request):
