@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-  </head>
-  <body>
+{% extends "master_template.html" %}
+{% block content %}
     <h1>Members</h1>
     <ul>
-      {% for i in members%}
-      <li>
-        <a href="details/{{i.member_id}}">{{i.firstname}} {{i.lastname}}</a>
-      </li>
-      {% endfor %}
+        {% for i in members %}
+            <li>
+                <a href="details/{{ i.member_id }}">{{ i.firstname }} {{ i.lastname }}</a>
+            </li>
+        {% endfor %}
     </ul>
-  </body>
-</html>
+{% endblock %}
